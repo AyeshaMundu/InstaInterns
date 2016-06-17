@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AGENT-PAGE</title>
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+  <link rel="stylesheet/less" type="text/css" href="/css/style.less" />
+  <link rel="stylesheet" type="text/css" href="/css/agent-page.css">
+</head>
+</head>
+<body>
+ <img  id ="logo" src="/img/logo.svg" />
+ <span id="wel_msg">
+   Welcome&nbsp;&nbsp;<span id="key">{{name}}</span>
+ </span>
+ <div class="chat-bar">
+  <div class="row">
+    <div class="btn-group dropup" id="up-list-button">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="circle">
+        <span class="glyphicon glyphicon-envelope"></span>
+      </button>
+      <ul class="dropdown-menu" id="up-list-dropup">
+        <li class="default-li"><a href="#">no chats</a></li>
+      </ul>
+    </div>
+    <div class="arc">
+      <div class="new-chat-no">5</div>
+    </div>
+    <div class="btn-group" id="settings-button">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="settings">
+       <span class="glyphicon glyphicon-wrench"></span>
+     </button>
+     <ul class="dropdown-menu" id="down-list-dropup">
+      <li id="offline"><a href="#" id="off">Go Offline</a></li>
+      <li id="logout"><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+<div id="logoutmsg">you went offline</div>
+<div id="append"></div>
+<footer>
+ <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+ <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+ <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+ <script src="/js/bootstrap.js"></script>
+ <script src="/js/agent_page.js"></script>
+ <script src="/js/less.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+   <!--<script type='text/javascript'>
+    $(function() {
+
+        try{
+            opera.setOverrideHistoryNavigationMode('compatible');
+            history.navigationMode = 'compatible';
+        }catch(e){}
+
+        function ReturnMessage()
+        {
+          var off1=document.getElementById("key");
+          return "wait";
+          var http = new XMLHttpRequest();
+          var url = "/slot_decrease";
+          var a={
+
+            v1:off1.innerHTML,
+
+
+          }
+          console.log(a);
+          var params = JSON.stringify(a);
+
+          http.open("POST", url , true);
+
+          http.setRequestHeader("Content-type", "application/json");
+
+          http.onreadystatechange = function() {
+            if(http.readyState == 4 && http.status == 200) 
+            {
+              console.log("in here here here");
+            }
+          }
+          console.log(params);
+          http.send(params);
+        }
+
+        function UnBindWindow()
+        {
+            $(window).unbind('beforeunload', ReturnMessage);
+        }
+
+        $(window).bind('beforeunload',ReturnMessage );
+    });
+  </script>-->
+ </footer>
+</body>
+</html>
