@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>crm-angular</title>
+	<style type="text/css">
+		.upper-nav{
+			position:fixed;
+			width: 100%;
+			top:0;
+			left: 0;
+			height: 100px;
+			background-color:#efefef;
+			z-index: 5;
+			font-size: 30px;
+			text-align: center;
+		}
+		.side-bar{
+			position:fixed;
+			height:100%;
+			left:0;
+			width:200px;
+			background-color:#909090;
+		}
+		.form1{
+			position:absolute;
+			height:270px;
+			width:900px;
+			background-color: grey;
+			left:330px;
+			top:120px;
+		}
+		.form1>div,.form2>div{
+			margin-top: 20px;
+			margin-left:20px;
+		}
+		.form2{
+			margin-top:20px;
+			position:absolute;
+			height:170px;
+			width:900px;
+			background-color: grey;
+			left:330px;
+			top:400px;
+		}
+		.container{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		span{
+			width:50px;
+		}
+		#radio-buttons{
+			margin:10px 20px;
+		}
+		#result>div>input{
+			margin-left:32px;
+		}
+	</style>
+</head>
+<body>
+	<div ng-app="" >
+	<div class="container" style="background-color:{{myCol}}">
+			<div class="side-bar" style="background-color:{{myCola}}"></div>
+			<div class="upper-nav" style="background-color:{{myColb}}"><div style="padding-top:20px">CRM-angularjs</div></div>
+			<div class="form1" style="background-color:{{myColc}}">
+				<div id="body-col"><div>body-color:</div><input type="text" ng-model="myCol" value="{{myCol}}"></div>
+				<div id="top-nav-col"><div>side-bar-color:</div><input type="text" ng-model="myCola" value="{{myCola}}"></div>
+				<div id="side-bar-col"><div>top-nav-color:</div><input type="text" ng-model="myColb" value="{{myColb}}"></div>
+				<div id="form-col"><div>form-color:</div><input type="text" ng-model="myColc" value="{{myColc}}"></div>
+			</div>
+			<div class="form2">
+				<div id="radio-buttons">
+					<input type="radio" name="gender" value="Add" ng-model="calc"> Add
+					<input type="radio" name="gender" value="Sub" ng-model="calc"> Sub
+					<input type="radio" name="gender" value="Multiply" ng-model="calc"> Multiply
+					<input type="radio" name="gender" value="Division" ng-model="calc"> Division<br>
+				</div>
+				<div id="val1"><span>val1:</span><input type="number" ng-model="vala" value="{{vala}}"></div>
+				<div id="val2"><span>val2:</span><input type="number" ng-model="valb" value="{{valb}}"></div>
+				<div ng-switch="calc" id="result">
+					<div ng-switch-when="Add">
+						<input type="number" value="{{vala+valb}}">
+					</div>
+					<div ng-switch-when="Sub">
+						<input type="number" value="{{vala-valb}}">
+					</div>
+					<div ng-switch-when="Multiply">
+						<input type="number" value="{{vala*valb}}">
+					</div>
+					<div ng-switch-when="Division">
+						<input type="number" value="{{vala/valb}}">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	</footer>
+</body>
+</html>
