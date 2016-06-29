@@ -4,6 +4,14 @@ var curragent;
 var tester;
 jQuery(function($)
 {
+
+	var newmessage = document.createElement('audio');
+	newmessage.setAttribute('src', '/audio/new-message.mp3');
+	newmessage.autoplay=false;
+	newmessage.load();
+	var $q=$("#qu");
+	$q.hide();
+	$("#submitted").hide();
 	function send()
 	{
 		var n=document.getElementById("enter-msg").value;
@@ -46,7 +54,8 @@ jQuery(function($)
 	var $msg=$("#enter-msg");
 	$enter_msg.hide();
 	var $parent=$(".parent");
-	var $iframe=$("iframe_win");
+	var $iframe=$(".iframe_win");
+	var $query=$("#enter-query");
 	$parent.hide();
 
 
@@ -86,18 +95,24 @@ jQuery(function($)
 	});
 
 	
-	$("#enter-name").on("keydown",function(event)
+	$("#enter-email").on("keydown",function(event)
 	{
 		if(event.which==13)
 		{
 			welcome();
 		}
+	});
 
-	});	
+	$("#submit-query").click(function(){
+		queryinsert();
+		$('#all').hide();
+		$("#submitted").show();
+	})
 
 	$("#sendmsg").click(function(e)
 	{
 		e.preventDefault();
+		console.log("send called");
 		send();
 	});
 
@@ -108,6 +123,7 @@ jQuery(function($)
 		
 		if(event.which==13)
 		{
+			console.log("send called");
 			send();
 		}
 		else
@@ -115,20 +131,45 @@ jQuery(function($)
 
 	});
 
+	function queryinsert(){
+		var que=document.getElementById("enter-query").value;
+		var mail=document.getElementById("enter-email").value;
+		var http = new XMLHttpRequest();
+		var url = "/visitor-query";
+		var a={
+			v1:mail,
+			v2:que
+		}
+		console.log(a);
+		var params = JSON.stringify(a);
+		http.open("POST", url , true);
+		http.setRequestHeader("Content-type", "application/json");
+		http.onreadystatechange = function() {
+			if(http.readyState == 4 && http.status == 200) 
+			{
+				console.log("in here here here");
+				tester = JSON.parse( http.responseText );
+			}
+		}
+		console.log(params);
+		http.send(params);
+	}
+
 	function welcome(){
 		var m=document.getElementsByClassName("chatwindow-container");
 		console.log(m);
-		m[0].style.visibility="hidden";
+		//m[0].style.visibility="hidden";
 		console.log($enter_msg);
-		$enter_msg.show();
-		$parent.show();
+		b=document.getElementById("enter-name").value;
+		c=document.getElementById("enter-email").value;
         console.log("yahan bhai");
 		var http = new XMLHttpRequest();
 		var url = "/visitor";
 		var a={
 
-			v1:"new-visitor"
-
+			v1:b,
+			v2:c
+			
 		}
 		console.log(a);
 		var params = JSON.stringify(a);
@@ -146,26 +187,35 @@ jQuery(function($)
 				tester = JSON.parse( http.responseText );
 				if(tester!=0)
 				{
+					m[0].style.visibility="hidden";
+					//$enter_msg.show();
+					$parent.show();
 					b=document.getElementById("enter-name").value;
+					c=document.getElementById("enter-email").value;
 					console.log(tester[0].agent_nick+" is eligible");
 					curragent=tester[0].agent_nick;
 					document.getElementById("cb-panel-body").innerHTML=curragent;
 					var data={
 						v1:tester[0].agent_nick,
-						v2:b
+						v2:b,
+						v3:c
 					}
 					socket.emit('new_visitor',data);
 
 				}
 				else
 				{
-
+					$("#ok-button").hide();
+					$("#submit-query").show();
+					$(".chatwindow-container").css("max-height","90%");
+					var $q=$("#qu");
+					$q.show();
 					console.log("all agents are busy");
-					var p=$("<div></div>").text("all ours agents are buzy we will contact you soon");
-					p.addClass("chat-bubble");
-					p.css("background-color","#efeed4");
-					$("#chat-bubbles").append(p);
-					$($enter_msg).hide();
+					// var p=$("<div></div>").text("all ours agents are buzy we will contact you soon");
+					// p.addClass("chat-bubble");
+					// p.css("background-color","#efeed4");
+					// $("#chat-bubbles").append(p);
+					// $($enter_msg).hide();
 					//socket.emit('new_visitor',"hehehe");
 				}
 
@@ -180,6 +230,7 @@ jQuery(function($)
 	{
 		$("#typing").hide();
 		console.log("msg aa gya");
+		newmessage.play();
 		console.log(data);
 		console.log(data1);
 		var p=$("<div></div>").text(data);
@@ -204,6 +255,11 @@ jQuery(function($)
 			
 		}
 
+	});
+
+	socket.on('arc_clk',function(data)
+	{
+		$enter_msg.show();
 	});
 
 });

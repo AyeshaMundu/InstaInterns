@@ -1,4 +1,5 @@
 
+
 .parent{
 	position: absolute;
 	width: 100%;
@@ -50,9 +51,11 @@ iframe{
 	color: #969696;
 	font-size: 24px;
 	left:43%;
-	top: 40px;
+	top: 30px;
 	position: absolute;
 	text-align: center;
+	background-color: #efefef;
+	z-index: 11;
 }
 
 #key{
@@ -119,22 +122,12 @@ iframe{
     height: 100%;
 }
 
-#circle {
-	width: 50px;
-	height: 50px;
-	background: #83c24f;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
-	border-radius: 50px;
-	 box-shadow: 2px 2px 2px grey;
-}
-
-
 #logo{
-	padding-top: 10px;
-	padding-left: 20px;
-	max-width: 200px;
-	max-height: 80px;
+	position: absolute;
+	left:10px;
+	top:2px;
+	max-width: 170px;
+	max-height: 70px;
 }
 
 #settings{
@@ -147,7 +140,7 @@ iframe{
 	position: fixed;
 	box-shadow: 2px 2px 2px grey;
 	right:20px;
-	top:30px;
+	top:90px;
 }
 
 #down-list{
@@ -207,7 +200,7 @@ position: fixed;
 #down-list-dropup{
 	position:fixed;
 	right:30px;
-	top:90px;
+	top:140px;
 }
 
 .dropdown-menu{

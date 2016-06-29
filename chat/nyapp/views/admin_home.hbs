@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ADMIN-HOMEPAGE</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet/less" type="text/css" href="/css/style.less" />
+</head>
+<body style="height:100%">
+	<div class="row">
+		<div class="btn-group" id="settings-button" style="z-index:150">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="settings">
+				<span class="glyphicon glyphicon-wrench"></span>
+			</button>
+			<ul class="dropdown-menu" id="down-list-dropup">
+				<li id="logout"><a href="#">Log Out</a></li>
+			</ul>
+		</div>
+		<div class="online-agents-ani" style="z-index:100;">
+			<span class="glyphicon glyphicon-chevron-left" id="left-chev"></span>
+		</div>
+		<div class="online-agents-container">
+			<div>
+				<span class="glyphicon glyphicon-chevron-right" id="right-chev"></span>
+				<span style="color:#efefef;font-size:18px;">online-agents</span>
+				<div class="online-win-container">
+					<ul class="nav nav-pills nav-stacked" id="agentlist">
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2" id="side-menu-bar">
+			<div class="container" id="side-menu-container">
+				<h3>Admin Panel</h3>
+				<ul class="nav nav-pills nav-stacked">
+					<li class="admin-profile-avatar">
+						<div id="avatar-circle"><span class="glyphicon glyphicon-user"></span></div>
+					</li>
+					<li class="active"><a href="#tickets" data-toggle="pill">Tickets</a></li>
+					<li id="chatret"><a href="#Chats" data-toggle="pill" id="chatret1">Chats</a></li>
+					<li><a href="#ProfileManagement" data-toggle="pill">Profile Management</a></li>
+					<li><a href="#AgentManagement" data-toggle="pill">Agent Management</a></li>
+					<li><a href="#VisitorRecord" data-toggle="pill">Visitor Record</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-10" style="padding:0;">
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="tickets">
+					<ul class="nav nav-tabs" id="ticket-tabs">
+						<li class="active"><a data-toggle="tab" href="#sectionA">Pending Tickets</a></li>
+						<li><a data-toggle="tab" href="#sectionB">Attended Tickets</a></li>
+						<li><a data-toggle="tab" href="#sectionC">All Tickets</a></li>
+					</ul>
+					<div class="tab-content">
+						<div id="sectionA" class="tab-pane fade in active">
+							sectionA
+						</div>
+						<div id="sectionB" class="tab-pane fade">
+							sectionB
+						</div>
+						<div id="sectionC" class="tab-pane fade">
+							sectionC
+						</div>
+					</div>
+				</div>
+				<div id="Chats" class="tab-pane fade">
+					<div class="tab-pane fade in active">
+						<ul class="nav nav-tabs" id="ticket-tabs">
+							<li class="active"><a data-toggle="tab" href="#tab1">All Chats</a></li>
+							<li><a data-toggle="tab" href="#tab2">Pending chats</a></li>
+						</ul> 
+						<div class="tab-content">
+							<div id="tab1" class="tab-pane fade in active">
+								<ul class="nav nav-pills nav-stacked all-chat-list" id="all-chat-list">
+								</ul>
+								<div class="tab-content" id="specific-chat-container">
+								</div>
+							</div>
+							<div id="tab2" class="tab-pane fade">
+								<ul class="nav nav-pills nav-stacked all-chat-list" id="all-pending-chat-list">
+								</ul>
+								<div class="tab-content" id="specific-pchat-container">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="ProfileManagement" class="tab-pane fade">
+					<div class="complete-container" >
+						<fieldset id="agent-p-fieldset">
+							<legend  id="agent-p-legend" style="background:none; border:none;"><span style="background-color:white; padding-left:50px;">Profile Settings</span></legend>
+							<div class="row">
+								<div class="col-md-4" style="height:inherit">
+									<div id="profile-photo">
+										<label id="upload-camera" style="cursor:pointer">
+										<input type="file" accept="image/*" id="aa">
+										<input type="submit" value="Upload Image" name="submit" style="display:none;" id="upload-image">
+										<span class="glyphicon glyphicon-camera"></span>
+									</label>
+									</div>
+									<textarea id="choosen-file" style="display:none;">Choose file</textarea>
+									<img src="/img/loading.gif" id="loading-gif">
+								</div>
+								<div class="col-md-6" id="name-pass-col">
+									<div class="name-pass-container">
+										<div id="agent-p-name">
+											Name:<input type="text" class="form-control" id="name">
+										</div>
+										<div id="agent-p-pass">
+											Password:<input type="password" class="form-control" id="password">
+										</div>
+										<div id="agent-p-passcon">
+											Confirm Password:<input type="password" class="form-control" id="confirm">
+										</div>
+										<div id="agent-p-phno">
+											E-mail:<input type="text" class="form-control" id="email" readonly>
+										</div>
+										<button type="button" class="btn btn-default" id="ok-button"><span class="glyphicon glyphicon-ok"></span></button>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div id="AgentManagement" class="tab-pane fade">
+					<div class="tab-pane fade in active">
+						<ul class="nav nav-tabs" id="ticket-tabs">
+							<li class="active"><a data-toggle="tab" href="#tab1">All Agents</a></li>
+						</ul> 
+						<div class="tab-content">
+							<div id="tab1" class="tab-pane fade in active">
+								<div class="btn-group" role="group" aria-label="..." id="add-remove-btn-group">
+									<button type="button" class="btn btn-default" id="add-agent-button">Add Agent</button>
+									<button type="button" class="btn btn-default" id="rmv-agent-button" >Remove Agent</button>
+								</div>
+								<div class="rmv-agent-form">
+									<input type="text" class="form-control" id="new-agent-ninp" placeholder="new agent's nick">
+									<input type="text" class="form-control" id="new-agent-einp" placeholder="new agent's email">
+								<button type="submit" class="btn btn-default" id="add-button">Submit</button>
+							</div>
+							<div class="remove-agent-form">
+									<input type="text" class="form-control new-agent-ninp1" id="new-agent-ninp" placeholder="agent nick">
+									<input type="text" class="form-control new-agent-einp1" id="new-agent-einp" placeholder="agent email">
+								<button type="submit" class="btn btn-default" id="remove-button">Remove agent</button>
+							</div>
+							<ul class="nav nav-pills nav-stacked abc" id="agent-mgmt-list">
+							</ul>
+						</div>
+						</div>
+					</div>
+				</div>
+				<div id="VisitorRecord" class="tab-pane fade" id="vis_rec">Name : Email</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+		<script src="/js/bootstrap.js"></script>
+		<script src="/js/less.js"></script>
+		<script src="/js/admin_home.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			window.pressed = function(){
+				var a = document.getElementById('aa');
+				if(a.value == "")
+				{
+					$("#choosen-file").text("choosen file");
+				}
+				else
+				{
+					var theSplit = a.value.split('\\');
+					$("#choosen-file").text(theSplit[theSplit.length-1]);
+					$("#upload-image").css("display","block");
+				}
+			};
+		</script>
+	</footer>
+</body>
+</html>

@@ -1,18 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>AGENT-PAGE</title>
+  <title>AGENT-PAGE</title>
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
   <link rel="stylesheet/less" type="text/css" href="/css/style.less" />
   <link rel="stylesheet" type="text/css" href="/css/agent-page.css">
 </head>
-</head>
 <body>
- <img  id ="logo" src="/img/logo.svg" />
- <span id="wel_msg">
-   Welcome&nbsp;&nbsp;<span id="key">{{name}}</span>
- </span>
- <div class="chat-bar">
+  <div class="panel panel-default">
+    <div class="panel-body">
+     <img  id ="logo" src="/img/logo.svg" />
+   </div>
+   <span id="wel_msg">
+     Welcome&nbsp;&nbsp;<span id="key">{{name}}</span>
+   </span>
+   <div id="email-container">
+    <span id="agent-email">
+      agent1@instarem.com
+    </span>
+    <img id="avatar" src="/img/avatar.png" >
+  </img>
+</div>
+</div>
+ <!--  <button  type="button" class="btn btn-default play">Play</button>
+<button  type="button" class="btn btn-default pause" style="position:absolute;top:100px;">Stop</button> -->
+<div class="chat-bar">
+  <div class="complete-container" id="profile-settings" >
+    <fieldset id="agent-p-fieldset">
+      <legend  id="agent-p-legend" style="background:none; border:none;"><span style="background-color:white">Profile Settings</span></legend>
+      <div class="row" style="margin-left:-130px;">
+        <div class="col-md-3" style="height:inherit">
+          <div id="profile-photo">
+            <div id="choosen-file">Choose file</div>
+          </div>
+          <form id="uploadForm" enctype="multipart/form-data" action="/test" method="post">
+            <label id="upload-camera" style="cursor:pointer">
+              <input type="file" accept="image/*" id="aa">
+              <input type="submit" value="Upload Image" name="submit" style="display:none;" id="upload-image">
+              <span class="glyphicon glyphicon-camera" style="padding-left:7px;"></span>
+            </label>
+          </form>
+        </div>
+        <div class="col-md-5" id="name-pass-col">
+          <div class="name-pass-container">
+            <div id="agent-p-name">
+              Name:<input type="text" class="form-control" id="name">
+            </div>
+            <div id="agent-p-pass">
+              Password:<input type="password" class="form-control" id="password">
+            </div>
+            <div id="agent-p-passcon">
+              Confirm Password:<input type="password" class="form-control" id="confirm">
+            </div>
+            <div id="agent-p-phno">
+              E-mail:<input type="text" class="form-control" id="email" readonly>
+            </div>
+            <button type="button" class="btn btn-default" id="ok-button"><span class="glyphicon glyphicon-ok"></span></button>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
   <div class="row">
     <div class="btn-group dropup" id="up-list-button">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="circle">
@@ -46,51 +94,43 @@
  <script src="/js/agent_page.js"></script>
  <script src="/js/less.js"></script>
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-   <!--<script type='text/javascript'>
-    $(function() {
+<!--  <script type="text/javascript">
+  window.pressed = function(){
+    var a = document.getElementById('aa');
+    if(a.value == "")
+    {
+      $("#choosen-file").text("choosen file");
+    }
+    else
+    {
+      var theSplit = a.value.split('\\');
+      $("#choosen-file").text(theSplit[theSplit.length-1]);
+      $("#upload-image").css("display","block");
+    }
+  };
+</script>
+<script>
+    $(document).ready(function() {
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', '/img/test.mp3');
+        audioElement.setAttribute('autoplay', 'autoplay');
+        //audioElement.load()
 
-        try{
-            opera.setOverrideHistoryNavigationMode('compatible');
-            history.navigationMode = 'compatible';
-        }catch(e){}
+        $.get();
 
-        function ReturnMessage()
-        {
-          var off1=document.getElementById("key");
-          return "wait";
-          var http = new XMLHttpRequest();
-          var url = "/slot_decrease";
-          var a={
+        audioElement.addEventListener("load", function() {
+            audioElement.play();
+        }, true);
 
-            v1:off1.innerHTML,
+        $('.play').click(function() {
+            audioElement.play();
+        });
 
-
-          }
-          console.log(a);
-          var params = JSON.stringify(a);
-
-          http.open("POST", url , true);
-
-          http.setRequestHeader("Content-type", "application/json");
-
-          http.onreadystatechange = function() {
-            if(http.readyState == 4 && http.status == 200) 
-            {
-              console.log("in here here here");
-            }
-          }
-          console.log(params);
-          http.send(params);
-        }
-
-        function UnBindWindow()
-        {
-            $(window).unbind('beforeunload', ReturnMessage);
-        }
-
-        $(window).bind('beforeunload',ReturnMessage );
+        $('.pause').click(function() {
+            audioElement.pause();
+        });
     });
-  </script>-->
- </footer>
+</script> -->
+</footer>
 </body>
 </html>
