@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ticket-login</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet/less" type="text/css" href="/css/style.less" />
+</head>
+<body style="background-color:#eee">
+   <div id="t-login-div">
+   	<img  id ="t-logo" src="/img/logo.svg" />
+   	<fieldset>
+   	<legend class="t-legend">Ticket id<span style="color:red">*</span></legend>
+   		<input id="t-enter-ticketid" type="text"><br>
+   	</fieldset>
+   	<fieldset>
+   		<legend class="t-legend">Password<span style="color:red">*</span></legend>
+   		<input id="t-enter-ticketpass" type="password"><br>
+   	</fieldset>
+   	<button type="button" class="btn btn-default t-button" >Submit</button>
+   </div>
+   <footer>
+   	<script src="/js/less.js"></script>
+   	<script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+   	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+   	<script src="/js/bootstrap.js"></script>
+   	<script src="/js/ticket-login.js"></script>
+   </footer>
+</body>
+</html>

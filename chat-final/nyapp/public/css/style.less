@@ -3,11 +3,26 @@
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
 @color:blue;
 @border:1px solid red;
+@textcol:#969696;
+@themecol2:#203946;
+@themecol:#83c24f;
 
 .stylemix(@col){
 	background-color:@col;
 	color:@color;
 	border:@border;
+}
+
+.rmv-agent-form,.remove-agent-form {
+    padding-left: 25%;
+    background-color: #eee;
+}
+
+
+input#new-agent-ninp,input#new-agent-einp {
+    width: 200px;
+    display: inline-block;
+    margin-right: 10px;
 }
 
 h1{
@@ -19,6 +34,13 @@ h1{
     to {left: 200px;}
 }
 
+.hide{
+  display:none;
+}
+
+.legend{
+  margin-bottom:0;
+}
 
 @keyframes slideFromLeft {
   0%{
@@ -29,6 +51,33 @@ h1{
     margin-left: 0;
     opacity: 1;
   }
+}
+
+button#chat-back-button {
+    position: absolute;
+    right: 40px;
+}
+
+.chat-bubble-admin {
+    height: 50px;
+    padding-left:30px;
+    border-top: 1px solid #eef;
+    div{
+      display:inline block;
+    }
+}
+
+.chat-div-cont{
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 414px;
+    position: absolute;
+    z-index:40;
+    width: 98.7%;
+}
+
+div#me-chat {
+    background-color: #e0e0e0;
 }
 
 @keyframes arc {
@@ -53,6 +102,206 @@ h1{
   }
 }
 
+@keyframes online-agents-ani{
+  0%{
+    right:20px;
+  }
+  25%{
+    right:40px;
+  }
+  100%
+  {
+    right:10px;
+  }
+}
+
+@keyframes online-agents-container{
+  0%{
+    right:-250px;
+  }
+  100%{
+    right:0px;
+  }
+}
+
+@keyframes online-agents-reverse{
+  0%{
+    right:0px;
+  }
+  100%{
+    right:-250px;
+  }
+}
+ 
+a:hover{
+  text-decoration:none;
+}
+#button-ticket {
+    padding-left: 35%;
+    padding-top: 1%;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    z-index: 50;
+    left: 20px;
+    top: 25px;
+}
+
+#all-ticket-list{
+
+.aticket {
+    display: block;
+    background-color: #ffffcc;
+    height: 70px;
+    padding-top:0px;
+
+    span#ticket-status {
+    position: absolute;
+    right: 130px;
+    padding-top: 10px;
+    color:#888;
+}
+
+.nav>ul#all-ticket-list {
+    margin-top: 20px;
+}
+
+span#ticket-agent {
+    position: absolute;
+    right: 130px;
+    margin-top: 40px;
+     color:#888;
+}
+
+span#ticket-user {
+    color: #888;
+}
+
+}
+}
+
+.ticket-alpha {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 26px;
+    text-align: center;
+    padding-top: 5px;
+    margin: 10px 30px;
+    background: linear-gradient( #8a2be2, #db36a4);
+    color: white;
+}
+
+div#ticket-info {
+    color: grey;
+    padding-left: 10px;
+    border-bottom: 1px solid #b8b8b8;
+    padding-bottom:10px;
+}
+
+
+.circle(@size,@col){
+  width: @size;
+  height: @size;
+  background: @col;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  position: absolute;
+}
+
+.agent-mgmt-avatar{
+  .circle(50px,#a8a8a8);
+    top:15px;
+    left:20px;
+    z-index:2;
+}
+
+.agent-mgmt-avatar-online{
+  .circle(30px,#a8a8a8);
+  top:10px;
+  z-index:2;
+  left:10px;
+}
+
+.nav-pills>li>a{
+  border-radius:0px;
+}
+
+.online-win-container{
+  padding-top:20px;
+  min-height:200px;
+  position:absolute;
+  right:0px;
+  width:100%;
+  overflow-y:auto;
+  overflow-x:hidden;
+  ul{
+    li{
+        a{
+          padding-left:50px;
+           padding-top:15px;
+          min-height:50px;
+        }
+    }
+  }
+}
+
+.online-agents-container{
+  width:250px;
+  min-height:300px;
+  position:fixed;
+  top:200px;
+  bottom:0px;
+  right:-250px;
+  z-index:100;
+  background-color:@themecol2;
+  .glyphicon-chevron-right{
+      font-size:32px;
+      color:#efefef;
+      cursor:pointer;
+      margin-right:30px;
+      margin-top:7px;
+      margin-left:10px;
+  }
+}
+.online-agents-ani{
+  position:fixed;
+  top:300px;
+  right:20px;
+  cursor:pointer;
+    .glyphicon-chevron-left{
+      font-size:44px;
+      color:@themecol;
+      cursor:pointer;
+    }
+}
+
+.circle(@coll) {
+  width: 50px;
+  height: 50px;
+  background: @coll;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+}
+
+#circle{
+  .circle(#83c24f);
+   box-shadow: 2px 2px 2px grey;
+}
+
+#avatar{
+  .circle(#efefef);
+  position:fixed;
+  right:20px;
+  cursor:pointer;
+  box-shadow:none;
+  padding:0;
+}
+
 .inputgrp(){
   padding: 0;
   margin: 0;
@@ -64,6 +313,11 @@ h1{
 #enter-name{
  .inputgrp();
  boder:none;
+ word-wrap: break-word;
+ }
+
+ #enter-email{
+ border:none;
  }
 
 input:focus{
@@ -80,6 +334,7 @@ textarea{
    height:60px;
    position:relative;
    overflow:auto;
+   word-wrap: break-word;
 }
 .glyphicon{
   font-size: 18px;
@@ -146,6 +401,10 @@ textarea{
     font: inherit;
     margin-right: 10px;
     margin-left:10px;
+    width:270 px;
+    min-height:46px;
+    margin-left:20px;
+    margin-right:20px;
 }
 
 #you:after{
@@ -177,9 +436,517 @@ textarea{
     float: right;
 }
 
+.chat-nick-div {
+    color: #003399;
+    font-size: 16px;
+    font-weight: bold;
+}
+.chat-bubble-admin{
+  height: 70px;
+  padding: 10px;
+}
+
 #me{
   float:right;
   background-color:#83c24f;
   color:white;
+  left:15px;
 }
 
+#you{
+  right:15px;
+}
+
+.panel-default{
+  position:fixed;
+  z-index:10;
+  width:100%;
+   background-color:#efefef;
+}
+
+#email-container{
+  position:absolute;
+  right:10px;
+  top:10px;
+  height:60px;
+  width:300px;
+  text-align:right;
+}
+
+#agent-mgmt-list{
+ border-top: 1px solid #efefef;
+  li{
+    border-bottom: 1px solid #efefef;
+    margin:0;
+  }
+  li:active{
+  background-color:grey;
+  }
+  a{
+    min-height:80px;
+    padding-top:30px;
+    padding-left:100px;
+  }
+}
+
+#agent-email{
+  position:absolute;
+  right:75px;
+  top:25px;
+  color:@textcol;
+  z-index:2;
+}
+
+#add-remove-btn-group{
+  padding: 10px 37%;
+    width: 100%;
+}
+
+.btn-default{
+  margin:5px;
+  background-color:grey;
+  color:white;
+  border:none;
+}
+
+.complete-container{
+  padding:100px 0px;
+}
+
+#agent-p-fieldset{
+  height:inherit;
+}
+
+#agent-p-legend{
+  
+}
+
+#squareimg{
+  position:absolute;
+  top:70px;
+  left:60px;
+  background-color:#efefef;
+}
+
+#gif1{
+  position: absolute;
+    border-radius: 50%;
+    left: 32px;
+}
+
+#profile-photo{
+  margin-top: 70px;
+    text-align: center;
+    margin-left: 30px;
+}
+
+#upload-camera{
+  .circle(#83c24f);
+  position:absolute;
+  top:240px;
+  left:240px;
+  z-index:60;
+}
+
+.glyphicon-camera{
+  font-size:34px;
+}
+
+#name-pass-col{
+  margin-left:30px;
+  margin-top:10px;
+  height:inherit;
+}
+
+.name-pass-container{
+    height:350px;
+    width:100%;
+    min-width:100px;
+    font-size:21px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    div{
+      margin:20px;
+    }
+    #ok-button{
+    border:none;
+    box-shadow:none;
+    padding:2px 12px;
+    width:150px;
+    height:40px;
+    border-radius:5px;
+    margin-left:210px;
+    background-color:grey;
+    }
+}
+
+div#specific-pchat-container {
+   margin-top: 30px;
+    padding: 10px;
+    margin-left: 25px;
+    width: 47%;
+    box-shadow: 3px 3px 3px #bbb;
+    border-left: 1px solid #eee;
+    border-top: 1px solid #efefef;
+}
+
+.loadingstate{
+  opacity:0.3;
+}
+
+#specific-chat-container
+{
+  margin-top:10px;
+}
+
+div#tab2 {
+    display: flex;
+}
+
+img#loading-gif {
+    z-index: 50;
+    position: absolute;
+    top: 100px;
+    left: 70px;
+}
+
+ul#all-pending-chat-list {
+    width: 47%;
+    overflow-y: auto;
+    max-height: 437px;
+    }
+
+input[type="file"] {
+    display: none;
+}
+
+.all-chat-list{
+  margin-top:30px;
+    overflow-y: auto;
+    max-height: 414px;
+    width: 99%;
+  li{
+    a{
+      height:60px;
+      background-color:#ffffcc;
+      div{
+          display:inline-block;
+          position:absolute;
+          top:20px;
+      }
+    }
+    a:hover{
+    background-color:#ffcc99;
+    }
+    a:active{
+    background-color:#ffffee;
+    }
+  }
+}
+
+.a-agent-name{
+  left:30px;
+  top:10px;
+}
+
+.a-visitor-name{
+ left:40%;
+}
+
+.a-time-stamp{
+  right:30px;
+}
+
+
+#choosen-file{
+  margin-top:250px;
+  text-align:center;
+  margin-left:60px;
+}
+
+#upload-image{
+  position:absolute;
+  top:-50px;
+  left:-130px;
+  color:white;
+  background-color: #777777;
+  border:none;
+  outline:0;
+  border-radius:2px;
+}
+
+
+#upload-image:active{
+  background-color:@themecol;
+}
+
+#side-menu-bar{
+  background-color:@themecol;
+  min-height:600px;
+  padding-right:0px;
+  width:230px;
+  min-width:230px;
+}
+
+#ticket-tabs{
+  padding-top:85px;
+}
+
+
+.row{
+  display:flex;
+  flewx-wrap:wrap;
+}
+
+#settings:active{
+  box-shadow: none;
+}
+
+
+#side-menu-container{
+  width:100%;
+  padding-right:0px;
+  padding-left:0px;
+  .admin-profile-avatar{
+    height:200px;
+    div{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      background-color:#eee;
+      margin-left:15%;
+      margin-top:15%;
+      span{
+        font-size:500%;
+        color:@themecol;
+        padding-left:27%;
+        padding-top:20%;
+      }
+    }
+  }
+  h3{
+  padding-left:35px;
+  }
+  .nav-stacked{
+     li:hover{
+      a{
+        color:black;
+        background-color:#eee;
+      }
+    }
+    li:active{
+      a{
+        color:black;
+        background-color:grey;
+      }
+    }
+    }
+    .nav-pills{
+    li{
+       a{
+      color:white;
+      font-size:16px;
+      width:100%;
+      border-radius:0px;
+     }
+    }
+  }
+}
+
+#settings-button{
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  right:20px;
+  top:30px;
+}
+
+.dropdown-menu{
+  max-width: 150px;
+  right:0;
+  left:auto;
+  background-color: #83c24f;
+  z-index: 5;
+}
+
+#settings{
+  width: 50px;
+  height: 50px;
+  background: #83c24f;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  position: fixed;
+  box-shadow: 2px 2px 2px grey;
+  right:20px;
+  top:30px;
+  border:none;
+}
+
+#down-list{
+  position: fixed;
+  height: 54px;
+  width: 54px;
+  right:25px;
+  top:35px;
+}
+
+.settings:active{
+  box-shadow: none;
+}
+
+#down-list-dropup{
+  position:fixed;
+  right:30px;
+  top:90px;
+}
+
+ #box{
+      height:100px;
+      width: 100px;
+      position: absolute;
+      background:#fff;
+      opacity:0.5;
+      top:0px;
+      left:50px;
+}
+#demo-basic{
+      height:300px;
+      width:300px;
+}
+
+
+#t-login-div {
+    position: absolute;
+    width: 450px;
+    height: 260px;
+    background-color: #fff;
+    box-shadow: 3px 3px 7px grey;
+    left: 33%;
+    top: 30%;
+    padding:10px 20px;
+}
+
+img#t-logo {
+    height: 60px;
+    margin: 10px 37%;
+}
+
+input#t-enter-ticketid, input#t-enter-ticketpass {
+    outline: 0;
+    border: 0;
+    font-size: 14px;
+    color: #b8b8b8;
+    width: 100%;
+    margin-bottom: 14px;
+}
+
+legend.t-legend {
+    margin-bottom: 0px;
+    font-size:16px;
+}
+
+.t-button{
+  background-color:@themecol;
+  margin-left:41%;
+}
+
+div#ticket-container {
+    background-color: #fff;
+    width: 90%;
+    min-height: 300px;
+    position: absolute;
+    margin-left: 5%;
+    box-shadow: 0.5px 1px 10px 1px;
+}
+
+div#msg-gola {
+    display: inline-block;
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    background-color: @themecol;
+    position: absolute;
+    left: 30px;
+    text-align:center;
+}
+
+div#t-menu-buttons {
+    position: absolute;
+    right: 20px;
+}
+
+div#t-menu {
+    margin-top: 20px;
+    height:60px;
+    border-bottom:1px solid #eee;
+}
+
+div#ticket-id {
+    padding-left: 20px;
+    margin-top: 20px;
+}
+
+div#t-conversation-container {
+    margin-left: 20px;
+    padding-top: 20px;
+    overflow-y: auto;
+    max-height: 530px;
+}
+
+div#ticket-body {
+    padding-left: 10px;
+    padding-top:10px;
+    min-height:250px;
+}
+
+.reply-window {
+    padding: 20px;
+    padding-top:30px;
+    background-color: #dfdfdf;
+    margin-top: 40px;
+    box-shadow: 0.5px 1px 10px 1px grey;
+    margin-bottom:40px;
+}
+
+.inner-container {
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+div#reply-to-panel {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+span.input-to-email {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.reply-my-info {
+    width: 90%;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
+div#my-reply-body {
+    border-top: 1px solid #cfcfcf;
+}
+
+div#mail-1 {
+    box-shadow: 0.5px 1px 7px 1px #b8b8b8;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom:20px;
+}
+
+textarea#my-reply-body {
+    width: 99%;
+    outline: none;
+    min-height: 230px;
+    border-top:1px solid #cfcfcf;
+}

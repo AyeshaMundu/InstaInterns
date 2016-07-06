@@ -6,15 +6,7 @@ jQuery(function($){
 	});
 	console.log("yere");
 	
-	socket.on('s_to_ag',function(data,data1)
-	{
-		console.log("i m here prem");
-		console.log(data);
-		console.log(data1);
-		var p=$("<div></div>").text(data);
-		$("#ap").append(p);
 
-	});
 
 	function height(){
 		var body_height=$("#body1").height()
