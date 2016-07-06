@@ -4,6 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var con_ip="127.0.0.1";
+
+var ad=0;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -11,7 +14,7 @@ var users = require('./routes/users');
 var app = express();
 var server=require('http').createServer(app);
 var io=require('socket.io')(server);
-server.listen(8080,"127.0.0.1");
+server.listen(8080,con_ip);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -39,6 +42,7 @@ app.io=require('socket.io')();
 agents={};
 visitors={};
 pair=[];
+admin={};
 
 io.sockets.on('connection',function(socket){
 
@@ -117,6 +121,8 @@ io.sockets.on('connection',function(socket){
     console.log("vis");
     console.log("hehehehiahah");
     agents[data1].emit('s_to_ag',data,data1,data2);
+    if(ad!==0)
+    admin[ad].emit('s_to_ag',data,data1,data2);
   });
 
   socket.on('vtyping',function(data1,data2){
@@ -126,6 +132,13 @@ io.sockets.on('connection',function(socket){
     console.log("hehehehiahah");
     agents[data1].emit('typing_to_ag',data1,data2);
 
+  });
+
+  socket.on('admin',function(data){
+    socket.nickname=data;
+    ad=socket.nickname;
+    admin[socket.nickname]=socket;
+    console.log(" new admin is "+socket.nickname);
   });
 
   socket.on('atyping',function(data,data1){
@@ -164,14 +177,17 @@ io.sockets.on('connection',function(socket){
     io.sockets.emit('addagent',data);
   })
 
-  socket.on('picked',function(data)
+  socket.on('picked',function(data,data1)
   {
     console.log("here in pick "+data);
     console.log(visitors[data]);
     visitors[data].emit('arc_clk',data);
+    var timestamp="today";
+    if(ad!==0)
+    admin[ad].emit('pick',data,data1,timestamp);
   });
 
-  socket.on('amsg',function(data,data1){
+  socket.on('amsg',function(data,data1,data2){
     console.log("agent message");
     console.log(data);
     console.log(data1);
@@ -181,6 +197,8 @@ io.sockets.on('connection',function(socket){
       if(data1===pair[i].v2){
         console.log("hehehehiahah");
         visitors[data1].emit('ag_to_s',data,data1);
+         if(ad!==0)
+        admin[ad].emit('ag_to_s',data,data1,data2);
         break;
       }
     }

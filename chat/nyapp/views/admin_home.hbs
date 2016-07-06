@@ -53,7 +53,31 @@
 					</ul>
 					<div class="tab-content">
 						<div id="sectionA" class="tab-pane fade in active">
-							sectionA
+							<div id="button-ticket" style="padding-left:35%; padding-top:20px;">
+								<button type="button" class="btn btn-default" >Pick up</button>
+								<button type="button" class="btn btn-default" >Assign</button>
+								<button type="button" class="btn btn-default" >Close</button>
+							</div>
+							<ul class="nav nav-pills nav-stacked" id="all-ticket-list" style="margin-top:20px;">
+								<li><input type="checkbox">
+									<a data-toggle="pill" href="#tic1" class="aticket">
+									<div class="ticket-alpha">A</div>
+									<span id="ticket-user">user-name</span>
+									<span id="ticket-status">Status:</span>
+									<span id="ticket-agent">Agent:</span>
+								</a></li>
+								<li><input type="checkbox">
+									<a data-toggle="pill" href="#tic2" class="aticket">
+									<div class="ticket-alpha">B</div>
+									<span id="ticket-user">user-name</span>
+									<span id="ticket-status">Status:</span>
+									<span id="ticket-agent">Agent:</span>
+								</a></li>		
+							</ul>
+							<div class="tab-content">
+							<div id="tic1" class="tab-pane fade chat-div-cont">tic1</div>
+							<div id="tic2" class="tab-pane fade chat-div-cont">tic2</div>
+							</div>
 						</div>
 						<div id="sectionB" class="tab-pane fade">
 							sectionB

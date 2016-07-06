@@ -1,3 +1,6 @@
+var agctr;
+var con_ip="localhost";
+var port_no="3000";
 jQuery(function($){
 
 	$("#loading-gif").hide();
@@ -29,7 +32,7 @@ jQuery(function($){
 	});
 
 	var adname,admail;
-	var socket = io.connect("http://localhost:8080");
+	var socket = io.connect("http://"+con_ip+":8080");
 	socket.on('connect', function (socket) {
 		console.log('Connected!');
 	});
@@ -101,6 +104,7 @@ jQuery(function($){
 			console.log("in here here here");
 			tester = JSON.parse(http7.responseText);
 			console.log("length of list is "+tester.length);
+			agctr=tester.length;
 			for(var i=0;i<tester.length;i++)
 			{
 				console.log(tester[i]);
@@ -134,6 +138,8 @@ jQuery(function($){
 					console.log($("#"+check+" div:nth-child(2)").text());
 					console.log("afterwards");
 					console.log(check2);
+					$(check2).removeClass("hide");
+					if ($(check2).is(':empty')){
 					var http5 = new XMLHttpRequest();
 					var url5 = "/chatret";
 					var a1={
@@ -159,7 +165,7 @@ jQuery(function($){
 
 							$(newb).on("click",function(){
 								$("#all-chat-list").show();
-								$(check2).hide();
+								$(check2).addClass("hide");
 							});
 							for(var i=0;i<tester3.length;i++)
 							{
@@ -185,7 +191,8 @@ jQuery(function($){
 							}
 						}
 				}
-				http5.send(params5);
+				http5.send(params5); 
+			}
 			});
 			}
 		}
@@ -380,6 +387,8 @@ jQuery(function($){
 
 	},500);
 
+	socket.emit("admin",adname);
+
 	socket.on('removeagent',function(data){
 		console.log(data);
 		$("#"+data).remove();
@@ -394,7 +403,95 @@ jQuery(function($){
 		newag.text(data);
 		newli.append(newag);
 		ag.append(newli);
-	})
+	});
+
+	socket.on('s_to_ag',function(data,data1,data2)
+	{
+		
+		console.log($("div[agent-user="+data1+""+data2+"]").attr("id"));
+		
+		var container_div=$("<div></div>").addClass("chat-bubble-admin");
+		var chat_div=$("<div></div>").addClass("chat-div");
+		var nick_div=$("<div></div>").addClass("chat-nick-div");
+		
+		container_div.attr("id","you-chat");
+		chat_div.text(data);
+		nick_div.text("user:"+data1);
+
+		$(container_div).append(nick_div);
+		$(container_div).append(chat_div);
+		$("div[agent-user="+data1+""+data2+"]").append(container_div);
+		console.log(data);
+		console.log(data1);
+		console.log(data2);
+	});
+
+	socket.on('ag_to_s',function(data,data1,data2)
+	{
+		console.log($("div[agent-user="+data2+""+data1+"]").attr("id"));
+		
+		var container_div=$("<div></div>").addClass("chat-bubble-admin");
+		var chat_div=$("<div></div>").addClass("chat-div");
+		var nick_div=$("<div></div>").addClass("chat-nick-div");
+
+		container_div.attr("id","me-chat");
+		chat_div.text(data);
+		nick_div.text("agent:"+data1);
+
+		$(container_div).append(nick_div);
+		$(container_div).append(chat_div);
+		$("div[agent-user="+data2+""+data1+"]").append(container_div);
+		
+		console.log("msg aa gya dobara");
+		console.log(data);
+		console.log(data1);
+		console.log(data2);
+
+	});
+
+	socket.on('pick',function(vis,ag,timestamp)
+	{
+		
+		console.log("han g call uth gya");
+		console.log(vis);
+		console.log(ag);
+		console.log(timestamp);
+		var newli=$("<li></li>");
+		var newa=$("<a></a>").addClass("chat-list-a");
+		newa.attr("data-toggle","pill");
+		newa.attr("href","#chat"+agctr);
+		newa.attr("id","chat-id"+agctr);
+		var newd1=$("<div></div>").addClass("a-agent-name");
+		newd1.text(ag);
+		var newd2=$("<div></div>").addClass("a-visitor-name");
+		newd2.text(vis);
+		var newd3=$("<div></div>").addClass("a-time-stamp");
+		newd3.text(timestamp);
+		$(newa).append(newd1);
+		$(newa).append(newd2);
+		$(newa).append(newd3);
+		$(newli).append(newa);
+		$("#all-chat-list").prepend(newli);
+		var chatdiv=$("<div></div>").attr("id","chat"+agctr);
+		chatdiv.addClass("tab-pane fade chat-div-cont");
+		chatdiv.attr("agent-user",ag+""+vis);
+		$("#specific-chat-container").append(chatdiv);
+		var bdiv=$("<div></div>").css("height","50px");
+		var newb=$("<button>back</button>").addClass("btn btn-default");
+		newb.attr("type","button");
+		newb.attr("id","chat-back-button");
+		$(newb).on("click",function(){
+			$("#all-chat-list").show();
+			$(chatdiv).addClass("hide");
+		});
+		$(bdiv).append(newb);
+		$(chatdiv).append(bdiv);
+		$(newa).on("click",function(){
+			$("#all-chat-list").hide();
+			$(chatdiv).removeClass("hide");
+		});
+		agctr++;
+	});
 
 	//diplay visitor records
 	var visrecords = $("#VisitorRecord");
@@ -443,7 +540,6 @@ jQuery(function($){
 				newd1.text(tester67[i].email);
 				var newd3=$("<div></div>").addClass("a-time-stamp");
 				newd3.text(tester67[i].time_stamp);
-				//<button type="button" class="btn btn-default">Left</button>
 				$(newa).append(newd1);
 				$(newa).append(newd3);
 				$(newli).append(newa);
@@ -459,7 +555,7 @@ jQuery(function($){
 
 	$("#logout").on("click",function()
 	{
-		location="http://localhost:3000/login";
+		location="http://"+con_ip+":"+port_no+"/login";
 	});
 
 	$("#remove-button").on("click",function()

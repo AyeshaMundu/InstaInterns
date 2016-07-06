@@ -2,6 +2,8 @@ var i=2;
 var b;
 var curragent;
 var tester;
+var con_ip="localhost";
+var port_no="3000";
 jQuery(function($)
 {
 
@@ -21,6 +23,9 @@ jQuery(function($)
 		p.attr("id","me");
 		$("#chat-bubbles").append(p);
 		socket.emit('vmsg',n,$("#cb-panel-body").text(),$("#enter-name").val());
+		var myDiv = document.getElementById("parent");
+		console.log(myDiv);
+		myDiv.scrollTop = myDiv.scrollHeight;
 		document.getElementById("enter-msg").value="";
 		var http = new XMLHttpRequest();
 		var url = "/vchat_add";
@@ -59,7 +64,7 @@ jQuery(function($)
 	$parent.hide();
 
 
-	var socket = io.connect("http://localhost:8080");
+	var socket = io.connect("http://"+con_ip+":8080");
 	socket.on('connect', function (socket) {
     console.log('Connected!');
 	});
@@ -211,12 +216,6 @@ jQuery(function($)
 					var $q=$("#qu");
 					$q.show();
 					console.log("all agents are busy");
-					// var p=$("<div></div>").text("all ours agents are buzy we will contact you soon");
-					// p.addClass("chat-bubble");
-					// p.css("background-color","#efeed4");
-					// $("#chat-bubbles").append(p);
-					// $($enter_msg).hide();
-					//socket.emit('new_visitor',"hehehe");
 				}
 
 			}
@@ -237,6 +236,9 @@ jQuery(function($)
 		p.addClass("chat-bubble");
 		p.attr("id","you");
 		$("#chat-bubbles").append(p);
+		var myDiv = document.getElementById("parent");
+		console.log(myDiv);
+		myDiv.scrollTop = myDiv.scrollHeight;
 
 	});
 

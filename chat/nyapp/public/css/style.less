@@ -18,6 +18,7 @@
     background-color: #eee;
 }
 
+
 input#new-agent-ninp,input#new-agent-einp {
     width: 200px;
     display: inline-block;
@@ -31,6 +32,10 @@ h1{
 @keyframes mymove {
     from {left: 0px;}
     to {left: 200px;}
+}
+
+.hide{
+  display:none;
 }
 
 .legend{
@@ -127,6 +132,74 @@ div#me-chat {
     right:-250px;
   }
 }
+ 
+a:hover{
+  text-decoration:none;
+}
+#button-ticket {
+    padding-left: 35%;
+    padding-top: 1%;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    z-index: 50;
+    left: 20px;
+    top: 25px;
+}
+
+#all-ticket-list{
+
+.aticket {
+    display: block;
+    background-color: #ffffcc;
+    height: 70px;
+    padding-top:0px;
+
+    span#ticket-status {
+    position: absolute;
+    right: 130px;
+    padding-top: 10px;
+    color:#888;
+}
+
+.nav>ul#all-ticket-list {
+    margin-top: 20px;
+}
+
+span#ticket-agent {
+    position: absolute;
+    right: 130px;
+    margin-top: 40px;
+     color:#888;
+}
+
+span#ticket-user {
+    color: #888;
+}
+
+}
+}
+
+.ticket-alpha {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 26px;
+    text-align: center;
+    padding-top: 5px;
+    margin: 10px 30px;
+    background: linear-gradient( #8a2be2, #db36a4);
+    color: white;
+}
+
+div#ticket-info {
+    color: grey;
+    padding-left: 10px;
+    border-bottom: 1px solid #b8b8b8;
+    padding-bottom:10px;
+}
 
 
 .circle(@size,@col){
@@ -194,7 +267,6 @@ div#me-chat {
       margin-left:10px;
   }
 }
-
 .online-agents-ani{
   position:fixed;
   top:300px;
@@ -743,3 +815,138 @@ input[type="file"] {
 }
 
 
+#t-login-div {
+    position: absolute;
+    width: 450px;
+    height: 260px;
+    background-color: #fff;
+    box-shadow: 3px 3px 7px grey;
+    left: 33%;
+    top: 30%;
+    padding:10px 20px;
+}
+
+img#t-logo {
+    height: 60px;
+    margin: 10px 37%;
+}
+
+input#t-enter-ticketid, input#t-enter-ticketpass {
+    outline: 0;
+    border: 0;
+    font-size: 14px;
+    color: #b8b8b8;
+    width: 100%;
+    margin-bottom: 14px;
+}
+
+legend.t-legend {
+    margin-bottom: 0px;
+    font-size:16px;
+}
+
+.t-button{
+  background-color:@themecol;
+  margin-left:41%;
+}
+
+div#ticket-container {
+    background-color: #fff;
+    width: 90%;
+    min-height: 300px;
+    position: absolute;
+    margin-left: 5%;
+    box-shadow: 0.5px 1px 10px 1px;
+}
+
+div#msg-gola {
+    display: inline-block;
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    background-color: @themecol;
+    position: absolute;
+    left: 30px;
+    text-align:center;
+}
+
+div#t-menu-buttons {
+    position: absolute;
+    right: 20px;
+}
+
+div#t-menu {
+    margin-top: 20px;
+    height:60px;
+    border-bottom:1px solid #eee;
+}
+
+div#ticket-id {
+    padding-left: 20px;
+    margin-top: 20px;
+}
+
+div#t-conversation-container {
+    margin-left: 20px;
+    padding-top: 20px;
+    overflow-y: auto;
+    max-height: 530px;
+}
+
+div#ticket-body {
+    padding-left: 10px;
+    padding-top:10px;
+    min-height:250px;
+}
+
+.reply-window {
+    padding: 20px;
+    padding-top:30px;
+    background-color: #dfdfdf;
+    margin-top: 40px;
+    box-shadow: 0.5px 1px 10px 1px grey;
+    margin-bottom:40px;
+}
+
+.inner-container {
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+div#reply-to-panel {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+span.input-to-email {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.reply-my-info {
+    width: 90%;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
+div#my-reply-body {
+    border-top: 1px solid #cfcfcf;
+}
+
+div#mail-1 {
+    box-shadow: 0.5px 1px 7px 1px #b8b8b8;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom:20px;
+}
+
+textarea#my-reply-body {
+    width: 99%;
+    outline: none;
+    min-height: 230px;
+    border-top:1px solid #cfcfcf;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TICKET-PAGE</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet/less" type="text/css" href="/css/style.less" />
+</head>
+<body style="background-color:#eee;">
+	<div id="ticket-container">
+		<div id="ticket-id">ticket #90998</div>
+		<div id="t-menu">
+			<div id="msg-gola"><span class="glyphicon glyphicon-envelope" style="padding-top:15px;"></span></div>
+			<div id="t-menu-buttons">
+			<button type="button" class="btn btn-default" >Forward</button>
+			<button type="button" class="btn btn-default" id="mail-reply-button" >Reply</button>
+			<button type="button" class="btn btn-default" >Close</button>
+			</div>
+		</div>
+		<div class="row" id="t-row">
+			<div class="col-md-8" id="t-conversation-container">
+				<div id="mail-1">
+					<div class="ticket-alpha" style="margin-left:10px;">S</div>
+					<div id="ticket-info">
+						<div id="t-subject" style="font-size:18px; color:black; font-weight:bold;">Subject</div>
+						<div id="reply-by">reply by and time stamp</div>
+						<div id="from-ticket">From:agent</div>
+						<div id="to-ticket">To:user</div>
+					</div>
+					<div id="ticket-body" style="background-color:#ffffdf;">
+						Electronic mail is a method of exchanging digital messages between computer users; such messaging first entered substantial use in the 1960s and by the 1970s had taken the form now recognised as email. Email operates across computer networks, now primarily the Internet.
+
+					</div>
+				</div>
+				<div class="reply-window">
+					<div id="reply-to-panel">Reply To: <span style="color:#b8b8b8; font-size:14px;">user@email.com</span></div>
+					<div class="inner-container">
+						<div><span class="input-to-email">From:</span><input type="text" name="From" class="reply-my-info" placeholder="my@email"></div>
+						<div><span class="input-to-email">Cc:</span><input type="text" name="From" class="reply-my-info" ></div>
+						<div><span class="input-to-email">Bcc:</span><input type="text" name="From" class="reply-my-info"></div>
+						<textarea id="my-reply-body">
+						
+						</textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+   	<script src="/js/less.js"></script>
+   	<script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+   	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+   	<script src="/js/bootstrap.js"></script>
+   	<script src="/js/ticket-page.js"></script>
+   </footer>
+</body>
+</html>

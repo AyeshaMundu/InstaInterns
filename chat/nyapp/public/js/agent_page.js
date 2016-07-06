@@ -3,6 +3,8 @@ var us;
 var vis_name;
 var tctr=0;
 var tester;
+var con_ip="localhost";
+var port_no="3000";
 jQuery(function($){
 
 	var messageTone = document.createElement('audio');
@@ -43,7 +45,7 @@ jQuery(function($){
 
 	var offf=document.getElementById("key");
 	var user_ctr=0;
-	var socket = io.connect("http://localhost:8080");
+	var socket = io.connect("http://"+con_ip+":8080");
 	socket.on('connect', function (socket) {
 		console.log('Connected!');
 	});
@@ -387,6 +389,7 @@ jQuery(function($){
 			var new_chatwindow=$("<div></div>").addClass("chatbox-window");
 			new_chatwindow.css("z-index","500");
 			var iframe_parent=$("<div></div>").addClass("parent");
+			iframe_parent.attr("id","parent");
 			var iframe=$("<div></div>").addClass('iframe_win');
 			var p=$("<div></div>").addClass("chat-bubble");
 			var chat_enter=$("<div></div>").addClass("chat-enter");
@@ -448,7 +451,8 @@ jQuery(function($){
 				console.log(ictr);
 			});
 
-			socket.emit('picked',$(new_chatbox_panel_body).text());
+			var off3=document.getElementById("key");
+			socket.emit('picked',$(new_chatbox_panel_body).text(),off3.innerHTML);
 
 			function send(no){
 				console.log("click");
@@ -457,7 +461,10 @@ jQuery(function($){
 				console.log(n);
 				var off1=document.getElementById("key");
 				console.log(off1.innerHTML);
-				socket.emit('amsg',$(enter_msg).val(),$(new_chatbox_panel_body).text());
+				socket.emit('amsg',$(enter_msg).val(),$(new_chatbox_panel_body).text(),off1.innerHTML);
+				var myDiv = document.getElementById("parent");
+				console.log(myDiv);
+				myDiv.scrollTop = myDiv.scrollHeight;
 				var p=$("<div></div>").text($(enter_msg).val());
 				p.addClass("chat-bubble");
 				p.attr("id","me");
@@ -548,6 +555,9 @@ jQuery(function($){
 			console.log("check krne ka chiz "+data2);
 			console.log("panel ka cheez");
 			console.log($(iframe).attr("id"));
+			var myDiv = document.getElementById("parent");
+			console.log(myDiv);
+			myDiv.scrollTop = myDiv.scrollHeight;
 			if($(iframe).attr("src")===data2){
 				$(iframe).append(p);
 				console.log("match");
@@ -574,7 +584,7 @@ jQuery(function($){
 			console.log(data1);
 			if(data===off1.innerHTML){
 				if($(iframe).attr("src")===data1){
-					var p=$("<div></div>").text(data1+" has disconnected click to close this window");
+					var p=$("<div></div>").text(data1+" has disconnected click here to close this window");
 					p.addClass("chat-bubble");
 					p.css("background-color","#efeed4");
 					p.css("cursor","pointer");
@@ -591,6 +601,7 @@ jQuery(function($){
 				var a={
 
 					v1:off1.innerHTML,
+					v2:data1
 
 				}
 				console.log(a);
@@ -632,7 +643,7 @@ $("#logout").click(function (e){
 			if(tester.length===0){
 				socket.emit('loggingout',off1.innerHTML);
 				setTimeout(function(){
-					location="http://localhost:3000/login";
+					location="http://"+con_ip+":"+port_no+"/login";
 				},1000);
 			}
 			else{
